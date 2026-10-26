@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindMath — Устный счёт</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main class="trainer">
+
+    <header class="header">
+        <div class="logo">MindMath</div>
+        <button type="button" id="exitButton" hidden>Выйти</button>
+    </header>
+
+    <!-- Настройки -->
+    <section id="settingsScreen" class="settings-screen">
+        <h1>Тренировка устного счёта</h1>
+        <p>Настрой тренировку под себя</p>
+
+        <button type="button" id="statsButton">
+            Моя статистика
+        </button>
+
+        <form id="settingsForm">
+
+            <fieldset>
+                <legend>Арифметические операции</legend>
+
+                <label><input type="checkbox" name="operation" value="add" checked> Сложение (+)</label>
+                <label><input type="checkbox" name="operation" value="subtract" checked> Вычитание (−)</label>
+                <label><input type="checkbox" name="operation" value="multiply" checked> Умножение (×)</label>
+                <label><input type="checkbox" name="operation" value="divide" checked> Деление (÷)</label>
+            </fieldset>
+
+            <label for="difficulty">Сложность</label>
+            <select id="difficulty">
+                <option value="easy">Лёгкая</option>
+                <option value="medium" selected>Средняя</option>
+                <option value="hard">Сложная</option>
+            </select>
+
+            <label for="mode">Режим тренировки</label>
+            <select id="mode">
+                <option value="normal">По количеству примеров</option>
+                <option value="timed">На время</option>
+            </select>
+
+            <div id="questionCountSetting">
+                <label for="questionCount">Количество примеров</label>
+                <select id="questionCount">
+                    <option value="10">10</option>
+                    <option value="20" selected>20</option>
+                    <option value="50">50</option>
+                </select>
+            </div>
+
+            <div id="timerSetting" hidden>
+                <label for="timeLimit">Время</label>
+                <select id="timeLimit">
+                    <option value="30">30 секунд</option>
+                    <option value="60" selected>60 секунд</option>
+                    <option value="120">120 секунд</option>
+                </select>
+            </div>
+
+            <button type="submit" class="answer-button">
+                Начать тренировку
+            </button>
+
+        </form>
+    </section>
+
+    <!-- Тренировка -->
+    <section id="trainingScreen" class="exercise" hidden>
+        <p class="category" id="operationLabel">УСТНЫЙ СЧЁТ</p>
+
+        <div id="timerDisplay" hidden>60 сек.</div>
+
+        <div class="problem" id="problem">12 + 8</div>
+
+        <form id="answerForm">
+            <input
+                type="number"
+                id="answerInput"
+                placeholder="Твой ответ"
+                autocomplete="off"
+                required
+            >
+
+            <button type="submit" class="answer-button">
+                Ответить
+            </button>
+
+            <button type="button" id="skipButton">
+                Пропустить
+            </button>
+        </form>
+
+        <p id="feedback" aria-live="polite"></p>
+        <p id="progressText">Пример 1 из 20</p>
+
+        <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <button type="button" id="fullscreenButton">
+            Полный экран
+        </button>
+    </section>
+
+    <!-- Результаты -->
+    <section id="resultsScreen" hidden>
+        <h2>Тренировка завершена</h2>
+
+        <p>Всего решено: <span id="resultTotal">0</span></p>
+        <p>Правильных ответов: <span id="resultCorrect">0</span></p>
+        <p>Ошибок и пропусков: <span id="resultWrong">0</span></p>
+        <p>Точность: <span id="resultAccuracy">0%</span></p>
+        <p>Среднее время на пример: <span id="resultAverage">0 сек.</span></p>
+        <p>Лучшая серия: <span id="resultStreak">0</span></p>
+
+        <button type="button" id="restartButton" class="answer-button">
+            Новая тренировка
+        </button>
+
+        <button type="button" id="resultsStatsButton">
+            Моя статистика
+        </button>
+    </section>
+
+    <!-- Постоянная статистика -->
+    <section id="statsScreen" hidden>
+        <h2>Моя статистика</h2>
+
+        <p>Завершено тренировок: <span id="statsTrainings">0</span></p>
+        <p>Всего решено примеров: <span id="statsSolved">0</span></p>
+        <p>Правильных ответов: <span id="statsCorrect">0</span></p>
+        <p>Ошибок и пропусков: <span id="statsWrong">0</span></p>
+        <p>Рекорд серии: <span id="statsStreak">0</span></p>
+        <p>Лучшая точность за тренировку: <span id="statsAccuracy">0%</span></p>
+
+        <button type="button" id="backFromStatsButton">
+            Назад
+        </button>
+    </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
